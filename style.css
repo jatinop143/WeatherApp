@@ -8,6 +8,8 @@ body{
  background-image:url("https://png.pngtree.com/thumb_back/fh260/background/20200801/pngtree-mountain-at-dawn-background-with-lake-and-sun-image_374070.jpg");
  background-repeat:no-repeat;
  background-size:cover;
+ overflow-y:auto;
+ overflow-x:hidden;
 }
 .card{
  margin: 100px auto 0;
