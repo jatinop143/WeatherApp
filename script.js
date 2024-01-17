@@ -6,19 +6,22 @@ async function checkweather(){
     var data= await all.json();
     console.log(data);
     if(data.weather[0].main == "Smoke"){
-        $(".weather-icon").attr("src","C:\Users\janpa\Downloads\3280918-removebg-preview.png")
+        $(".weather-icon").attr("src","3280918-removebg-preview.png")
      }
     else if(data.weather[0].main == "Mist"){
-        $(".weather-icon").attr("src","images/mist.png")
+        $(".weather-icon").attr("src","mist.png")
      }
     else if(data.weather[0].main == "Clouds"){
-        $(".weather-icon").attr("src","images/clouds.png")
+        $(".weather-icon").attr("src","clouds.png")
      }
     else if(data.weather[0].main == "Rain"){
-        $(".weather-icon").attr("src","image/rain.png")
+        $(".weather-icon").attr("src","rain.png")
+     }
+    else if(data.weather[0].main == "Clear"){
+        $(".weather-icon").attr("src","clear.png")
      }
     document.querySelector(".city").innerHTML=data.name;
-    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+"°C";
+    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+"Â°C";
     document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
     document.querySelector(".wind").innerHTML=data.wind.speed+" km/h";
 }
@@ -29,22 +32,22 @@ element.addEventListener("click", async function() {
     var data= await all.json();
     console.log(data);
     if(data.weather[0].main == "Smoke"){
-        $(".weather-icon").attr("src","C:\Users\janpa\Downloads\3280918-removebg-preview.png")
+        $(".weather-icon").attr("src","3280918-removebg-preview.png")
      }
     else if(data.weather[0].main == "Mist"){
-        $(".weather-icon").attr("src","images/mist.png")
+        $(".weather-icon").attr("src","mist.png")
      }
     else if(data.weather[0].main == "Clouds"){
-        $(".weather-icon").attr("src","images/clouds.png")
+        $(".weather-icon").attr("src","clouds.png")
      }
     else if(data.weather[0].main == "Rain"){
-        $(".weather-icon").attr("src","images/rain.png")
+        $(".weather-icon").attr("src","rain.png")
      }
     else if(data.weather[0].main == "Clear"){
-        $(".weather-icon").attr("src","images/clear.png")
+        $(".weather-icon").attr("src","clear.png")
      }
     document.querySelector(".city").innerHTML=data.name;
-    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+"°C";
+    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+"Â°C";
     document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
     document.querySelector(".wind").innerHTML=data.wind.speed+" km/h";
 });
