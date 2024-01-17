@@ -1,0 +1,86 @@
+*{
+margin:0;
+padding: 0;
+font-family: 'Poppins', sans-serif;
+box-sizing:border-box;
+}
+body{
+ background-image:url("https://png.pngtree.com/thumb_back/fh260/background/20200801/pngtree-mountain-at-dawn-background-with-lake-and-sun-image_374070.jpg");
+ background-repeat:no-repeat;
+ background-size:cover;
+}
+.card{
+ margin: 100px auto 0;
+ padding:50px 45px;
+ width: 90%;
+ max-width:470px;
+ color:white;
+ background-image:linear-gradient(skyblue,cyan,#E0B0FF);
+ border-radius:20px;
+ text-align: center;
+}
+.search{
+ align-items:center;
+ justify-content:spacebetween;
+ display:flex;
+ width:100%;
+}
+#input{
+border:0;
+outline:0;
+border-radius: 30px;
+margin-right:16px;
+flex:1;
+font-size: 18px;
+color:#555;
+background: #ebfffc;
+height:60px;
+padding:10px 25px;
+}
+.search button{
+ border: 0;
+ outline: 0;
+ border-radius: 50%;
+ height: 60px;
+ width:60px;
+ cursor:pointer;
+ background:#ebfffc;
+}
+.search button img{
+ width: 20px;
+}
+.weather-icon{
+    width:170px;
+    margin-top:30px;
+}
+.weather h1{
+    font-weight: 500;
+    font-size: 80px;
+}
+.weather h2{
+    font-weight: 400;
+    font-size: 45px;
+    margin-top:-10;
+}
+.details{
+    align-items:center;
+    justify-content: space-between;
+    display: flex;
+    padding:0 20px;
+    margin-top:50px;
+}
+.col{
+    display: flex;
+    text-align:left;
+    align-items:center;
+}
+.col img{
+    width:40px;
+    margin-top:10px;
+}
+.humidity,.wind{
+    font-size:28px;
+    margin-top:-6px;
+}
+
+
