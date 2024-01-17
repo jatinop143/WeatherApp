@@ -1,8 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Weather</title>
       <link rel="stylesheet" href="style.css">
+    <style>
+      html,body{
+        height:100%;
+      }
+      body{
+        overflow:hidden;
+        margin:0;
+      }
+      .card{
+        min-width:100%;
+      }
+      @media screen and (max-width: 600px) {
+   /* Mobile styles for smaller screens (e.g., iPhone SE) */
+   .card {
+      padding: 30px 25px; /* Adjust padding for smaller screens */
+   }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+   /* Mobile styles for normal mobile screens (e.g., iPhone 7, 8, etc.) */
+   .card {
+      padding: 40px 45px; /* Adjust padding for normal mobile screens */
+   }
+}
+@media screen and (min-width: 900px) {
+   /* Styles for larger screens (e.g., iPhone 14 Pro Max) */
+   .card {
+      padding: 50px 45px; /* Adjust padding for larger screens */
+   }
+}
+    </style>
   </head>
   <body>
      <div class="card">
