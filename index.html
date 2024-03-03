@@ -4,20 +4,106 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Weather</title>
-      <link rel="stylesheet" href="style.css">
-    <style>
-      html,body{
-        height:100%;
-      }
-      body{
-        overflow:hidden;
-        margin:0;
-        background-attachment: fixed; 
-      }
-      .card{
-        min-width:50%;
-      }
-      @media screen and (max-width: 600px) {
+      <style>
+      *{
+margin:0;
+padding: 0;
+font-family: 'Poppins', sans-serif;
+box-sizing:border-box;
+}
+html{
+ height:100%;
+}
+ body {
+   overflow-x: hidden;
+   overflow-y: auto; /* or overflow-y: scroll; */
+}
+
+body{
+ background-image:url("https://png.pngtree.com/thumb_back/fh260/background/20200801/pngtree-mountain-at-dawn-background-with-lake-and-sun-image_374070.jpg");
+ background-repeat:no-repeat;
+ background-size:cover;
+ margin:0;
+ height:100%;
+ background-attachment: fixed;
+}
+.card{
+ margin: 100px auto 0;
+ padding:50px 45px;
+ width: 90%;
+ min-width:50%;
+ color:white;
+ background-image:linear-gradient(skyblue,cyan,#E0B0FF);
+ border-radius:20px;
+ text-align: center;
+}
+.search{
+ align-items:center;
+ justify-content:spacebetween;
+ display:flex;
+ width:100%;
+}
+#input{
+border:0;
+outline:0;
+border-radius: 30px;
+margin-right:16px;
+flex:1;
+font-size: 18px;
+color:#555;
+background: #ebfffc;
+height:60px;
+padding:10px 25px;
+}
+.search button{
+ border: 0;
+ outline: 0;
+ border-radius: 50%;
+ height: 60px;
+ width:60px;
+ cursor:pointer;
+ background:#ebfffc;
+}
+.search button img{
+ width: 20px;
+}
+.weather-icon{
+    width:170px;
+    margin-top:30px;
+}
+.weather h1{
+    font-weight: 500;
+    font-size: 80px;
+}
+.weather h2{
+    font-weight: 400;
+    font-size: 45px;
+    margin-top:-10;
+}
+.details{
+    align-items:center;
+    justify-content: space-between;
+    display: flex;
+    padding:0 20px;
+    margin-top:50px;
+}
+.col{
+    display: flex;
+    text-align:left;
+    align-items:center;
+}
+.col img{
+    width:40px;
+    margin-top:10px;
+}
+.humidity,.wind{
+    font-size:28px;
+    margin-top:-6px;
+}
+
+  /* Your existing styles outside the media query */
+
+@media screen and (max-width: 600px) {
    /* Mobile styles for smaller screens (e.g., iPhone SE) */
    .card {
       padding: 30px 25px; /* Adjust padding for smaller screens */
@@ -36,7 +122,12 @@
       padding: 50px 45px; /* Adjust padding for larger screens */
    }
 }
-    </style>
+
+
+/* Add more media queries as needed for other screen sizes */
+
+
+      </style>
   </head>
   <body>
      <div class="card">
@@ -46,7 +137,7 @@
         </div>
         <div class="weather">
             <img src="rain.png" class="weather-icon">
-            <h1 class="temp">22°C</h1>
+            <h1 class="temp">22�C</h1>
             <h2 class="city">New York</h2>
             <br>
             <div class="details">
@@ -69,6 +160,61 @@
         </div>
      </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+
+    <script>
+    const apikey="9bc280d2e715487c1dd853224714e66f";
+const element = document.getElementById("btn");
+const apiurl="https://api.openweathermap.org/data/2.5/weather?units=metric" ;
+async function checkweather(){
+    const all= await fetch(apiurl+`&appid=${apikey}`+`&q=jaipur`);
+    var data= await all.json();
+    console.log(data);
+    if(data.weather[0].main == "Smoke"){
+        $(".weather-icon").attr("src","3280918-removebg-preview.png")
+     }
+    else if(data.weather[0].main == "Mist"){
+        $(".weather-icon").attr("src","mist.png")
+     }
+    else if(data.weather[0].main == "Clouds"){
+        $(".weather-icon").attr("src","clouds.png")
+     }
+    else if(data.weather[0].main == "Rain"){
+        $(".weather-icon").attr("src","rain.png")
+     }
+    document.querySelector(".city").innerHTML=data.name;
+    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+".C";
+    document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
+    document.querySelector(".wind").innerHTML=data.wind.speed+" km/h";
+}
+checkweather();
+element.addEventListener("click", async function() {
+    var city=document.querySelector("#input").value;
+    const all= await fetch(apiurl+`&appid=${apikey}`+`&q=${city}`);
+    var data= await all.json();
+    console.log(data);
+    if(data.weather[0].main == "Smoke"){
+        $(".weather-icon").attr("src","3280918-removebg-preview.png")
+     }
+    else if(data.weather[0].main == "Mist"){
+        $(".weather-icon").attr("src","mist.png")
+     }
+    else if(data.weather[0].main == "Clouds"){
+        $(".weather-icon").attr("src","clouds.png")
+     }
+    else if(data.weather[0].main == "Rain"){
+        $(".weather-icon").attr("src","rain.png")
+     }
+    else if(data.weather[0].main == "Clear"){
+        $(".weather-icon").attr("src","clear.png")
+     }
+    document.querySelector(".city").innerHTML=data.name;
+    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+".C";
+    document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
+    document.querySelector(".wind").innerHTML=data.wind.speed+" km/h";
+});
+
+
+    </script>
+
   </body>
 </html>
